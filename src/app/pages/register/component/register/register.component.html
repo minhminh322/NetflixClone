@@ -1,0 +1,20 @@
+<app-nav-bar></app-nav-bar>
+<div class="register-container">
+  <div class="register-form">
+    <h1>Create a password to start your membership</h1>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="Your email" [formControl]="email" required />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="Password"
+        [formControl]="password"
+        required
+      />
+    </mat-form-field>
+    <a class="button" routerLink="/register/addKey">Next</a>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<div class="login-container">
+  <div class="login-form">
+    <h1>Login</h1>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="Your email" [formControl]="email" required />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="Password"
+        [formControl]="password"
+        required
+      />
+    </mat-form-field>
+    <button class="button" (click)="login()">Sign In</button>
+  </div>
+  <span>New to Netflix? <a routerLink="/register">Sign Up Now</a></span>
+</div>
