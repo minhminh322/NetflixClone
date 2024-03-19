@@ -1,0 +1,11 @@
+<div
+  class="movie-list"
+  infiniteScroll
+  [infiniteScrollContainer]="'.movie-list'"
+  [fromRoot]="true"
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="fetchMovies()"
+>
+  <app-movie-item *ngFor="let movie of movies" [movie]="movie"></app-movie-item>
+</div>

@@ -1,25 +1,14 @@
-<app-nav-bar></app-nav-bar>
 <div class="register-container">
-  <div class="add-key-form">
+  <form class="add-key-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1>Create a Username && Add your TMBD API Key</h1>
     <mat-form-field>
       <mat-label>Enter your username</mat-label>
-      <input
-        matInput
-        placeholder="Your username"
-        [formControl]="username"
-        required
-      />
+      <input matInput formControlName="username" required />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Enter your TMDB API Key</mat-label>
-      <input
-        matInput
-        placeholder="Your API Key"
-        [formControl]="apikey"
-        required
-      />
+      <input matInput formControlName="tmdb_key" required />
     </mat-form-field>
-    <a class="button" routerLink="/register/choosePlan">Next</a>
-  </div>
+    <button class="button" type="submit">Next</button>
+  </form>
 </div>

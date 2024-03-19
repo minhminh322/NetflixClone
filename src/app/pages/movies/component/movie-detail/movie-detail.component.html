@@ -1,0 +1,23 @@
+<div
+  class="movie-detail"
+  [style.backgroundImage]="
+    'url(https://image.tmdb.org/t/p/original' + movieDetail.poster_path + ')'
+  "
+>
+  <div class="movie-info">
+    <div class="left-view">
+      <div class="movie-title">{{ movieDetail.title }}</div>
+      <div class="movie-desc">
+        {{ movieDetail.vote_average | number : "1.1-1" }} |
+        {{ movieDetail.vote_count }} | {{ movieDetail.runtime }} .
+        {{ movieDetail.release_date | date : "yyyy" }} |
+        <span *ngFor="let genre of movieDetail.genres">{{ genre.name }}, </span>
+      </div>
+      <br />
+      <br />
+      <div class="movie-overview">{{ movieDetail.overview }}</div>
+      <button class="button" (click)="playTrailer()">Play Now</button>
+    </div>
+    <div class="right-view">TBD</div>
+  </div>
+</div>

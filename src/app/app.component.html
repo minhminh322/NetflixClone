@@ -8,6 +8,8 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main>
+  <span *ngIf="dataService.getLoading() | async">Loading...</span>
+  <app-nav-bar></app-nav-bar>
   <router-outlet></router-outlet>
   <!-- <app-home class="content"></app-home> -->
 </main>

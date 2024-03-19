@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/component/home/home.component';
-import { LoginComponent } from './pages/login/component/login/login.component';
-import { RegisterComponent } from './pages/register/component/register/register.component';
-import { AddKeyComponent } from './pages/register/component/add-key/add-key.component';
-import { ChoosePlanComponent } from './pages/register/component/choose-plan/choose-plan.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'login',
+    // component: LoginComponent,
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule),
+  },
   {
     path: 'register',
-    children: [
-      { path: '', component: RegisterComponent },
-      { path: 'addKey', component: AddKeyComponent },
-      { path: 'choosePlan', component: ChoosePlanComponent },
-    ],
+    loadChildren: () =>
+      import('./pages/register/register.module').then((m) => m.RegisterModule),
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./pages/movies/movies.module').then((m) => m.MoviesModule),
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

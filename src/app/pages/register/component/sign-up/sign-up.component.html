@@ -1,0 +1,71 @@
+<div class="register-container">
+  <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Create a password to start your membership</h1>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput formControlName="email" id="email" required />
+      <div *ngIf="!email.valid && (email.dirty || email.touched)">
+        <div *ngIf="email.errors?.['required']" class="invalid">
+          Email is required
+        </div>
+        <div *ngIf="email.errors?.['pattern']" class="invalid">
+          Type a valid email!
+        </div>
+        <div *ngIf="email.errors?.['emailTaken']" class="invalid">
+          Email is taken. Try another ...
+        </div>
+      </div>
+    </mat-form-field>
+    <div class="password-form" formGroupName="password">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="pwd"
+          required
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          formControlName="confirm"
+          required
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div *ngIf="!password.valid && (password.dirty || password.touched)">
+      <div *ngIf="pwd.errors?.['required']" class="invalid">
+        Password is required
+      </div>
+      <div *ngIf="pwd.errors?.['minlength']" class="invalid">
+        Password must be at least 6 characters
+      </div>
+      <div *ngIf="password.errors?.['passwordNotMatch']" class="invalid">
+        Password does not match
+      </div>
+    </div>
+
+    <button class="button" type="submit">Next</button>
+  </form>
+</div>

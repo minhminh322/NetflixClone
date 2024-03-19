@@ -1,0 +1,20 @@
+<div class="nav-bar">
+  <div class="netflix-logo" routerLink="/home">Netflix</div>
+  <div class="auth-info">
+    <div class="username-info" *ngIf="user">{{ user.username }}</div>
+    <a
+      class="button"
+      id="sign-in"
+      routerLink="/login"
+      *ngIf="user.id.length == 0"
+      >Sign In</a
+    >
+    <a
+      class="button"
+      id="sign-out"
+      (click)="signOut()"
+      *ngIf="user.id.length > 0"
+      >Sign Out</a
+    >
+  </div>
+</div>
